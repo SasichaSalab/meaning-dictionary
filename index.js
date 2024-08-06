@@ -50,7 +50,7 @@ const handleEvent = async (event) => {
         await client.replyMessage(event.replyToken, { type: 'text', text: 'Sorry, I could not find the definition of that word.' });
     }
 };
-
-app.listen(4000, () => {
+const PORT = process.env.PORT || 4000;
+app.listen(PORT, () => {
     console.log('listening on 4000');
 });
