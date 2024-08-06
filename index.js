@@ -2,13 +2,13 @@ const line = require('@line/bot-sdk');
 const express = require('express');
 const axios = require('axios').default;
 
+const env = dotenv.config().parsed;
 const app = express();
 
 const lineConfig = {
-    channelAccessToken: "R0/XnMgYJWlI+m8o3VDobcnNDTXQqGzBEyLvNQWp6sNSUfxwhFMc2+iWpjwfJhghj22xlgzzL7ahpAqNTJhRNXt1pX0vQMgyzqB9B584Wmb1lMTtZSRAY7U/A3sFK5LKoArGT/qI8snEJzivF0+CJgdB04t89/1O/w1cDnyilFU=",
-    channelSecret: "434f27d77a14c82f9723b86338cc23b2"
+    channelAccessToken: env.ACCESS_TOKEN,
+    channelSecret: env.SECRET_TOKEN 
 };
-
 const client= new line.Client(lineConfig)
 
 app.post('/webhook', line.middleware(lineConfig), async (req, res) => {
